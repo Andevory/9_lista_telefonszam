@@ -19,6 +19,13 @@ for (int i = 0; i < input.Length; i = i + 2)
     //data.Clear();
 }
 Console.WriteLine($"A hívások száma: {data.Count}");
+//Console.WriteLine(data[0].Idotartam());
+double sum = 0;
+for (int i = 0; i < data.Count; i++)
+{
+    sum += data[i].Idotartam();
+}
+Console.WriteLine($"Az hívás összege: {sum} másodperc");
 struct Hivasok
 {
     public int kora;
@@ -40,4 +47,12 @@ struct Hivasok
         zmperc = int.Parse(splitted[5]);
         telszam = line2;
     }
+
+    public double Idotartam()
+    {
+        TimeSpan t1 = new TimeSpan(kora, kperc, kmperc);
+        TimeSpan t2 = new TimeSpan(zora, zperc, zmperc);
+        TimeSpan t = t2.Subtract(t1);
+        return t.TotalSeconds;
+      }
 }
