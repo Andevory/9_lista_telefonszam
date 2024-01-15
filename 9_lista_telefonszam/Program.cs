@@ -26,6 +26,16 @@ for (int i = 0; i < data.Count; i++)
     sum += data[i].Idotartam();
 }
 Console.WriteLine($"Az hívás összege: {sum} másodperc");
+
+double max = 0;
+for (int i = 0; i < data.Count; i++)
+{
+    if (data[i].Idotartam() > max)
+    {
+        max = data[i].Idotartam();
+    }
+}
+Console.WriteLine($"A leghosszabb hívás {max} másodperc");
 struct Hivasok
 {
     public int kora;
