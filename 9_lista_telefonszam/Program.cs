@@ -25,7 +25,7 @@ for (int i = 0; i < data.Count; i++)
 {
     sum += data[i].Idotartam();
 }
-Console.WriteLine($"Az hívás összege: {sum} másodperc");
+Console.WriteLine($"Az hívás összege: {Atvalt(sum)} másodperc");
 
 double max = 0;
 for (int i = 0; i < data.Count; i++)
@@ -35,7 +35,16 @@ for (int i = 0; i < data.Count; i++)
         max = data[i].Idotartam();
     }
 }
-Console.WriteLine($"A leghosszabb hívás {max} másodperc");
+Console.WriteLine($"A leghosszabb hívás {Atvalt(max)} másodperc");
+
+static string Atvalt(double masodperc)
+{
+    int ora = Convert.ToInt32(masodperc) / 3600;
+    int maradora = Convert.ToInt32(masodperc) % 3600;
+    int perc = Convert.ToInt32(maradora) / 60;
+    int maradperc = Convert.ToInt32(maradora) % 60;
+    return $"{ora} óra {perc} perc {maradperc}";
+}
 struct Hivasok
 {
     public int kora;
