@@ -1,4 +1,25 @@
-﻿struct Hivasok
+﻿string[] input = File.ReadAllLines("hivasok.txt");
+//Tömb esetén a méret fix és nem módosítható!
+//Hivasok[] data = new Hivasok[input.Length];
+//Lista létrehozása: Ez a lista egy úgynevezett
+//láncolt lista lesz a háttérben. Ennek elmélete: 13.-ban
+List<Hivasok> data = new List<Hivasok>();
+//i = i + 2 --> Kettesével lépked végig a fájlon
+for (int i = 0; i < input.Length; i = i + 2)
+{
+    //Add --> A lista végére szúr be egy új elemet!
+    data.Add(new Hivasok(input[i], input[i + 1]));
+    //Insert --> Adott indexű helyre szúr be új elemet!
+    //data.Insert(0, new Hivasok(input[i], input[i + 1]));
+    //Remove --> Kitöröl adott elemet a listából
+    //data.Remove(data[i]);
+    //RemoveAt --> Adott sorszámú elemet töröl
+    //data.RemoveAt(i);
+    //Clear --> Töröl minden elemet a listából
+    //data.Clear();
+}
+Console.WriteLine($"A hívások száma: {data.Count}");
+struct Hivasok
 {
     public int kora;
     public int kperc;
